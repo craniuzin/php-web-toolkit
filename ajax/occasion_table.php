@@ -24,20 +24,16 @@
  */
 
 
-$x='';
-if (isset($_REQUEST['x'])){
-    $x = $_REQUEST['x'];
-}
-$y='';
-if (isset($_REQUEST['y'])){
-    $y = $_REQUEST['y'];
+$playlistID='';
+if (isset($_REQUEST['playlistID'])){
+    $playlistID = $_REQUEST['playlistID'];
 }
 
 $workingDir = dirname(__FILE__);
-
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'rfSDK'. DIRECTORY_SEPARATOR .'rfBase.php');
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR. 'rfSDK'. DIRECTORY_SEPARATOR .'rfExchange.php');
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR . 'rfSDK'. DIRECTORY_SEPARATOR .'rfUtils.php');
+
 
 rfExchange::setUp("sandbox", "sandbox");
 
@@ -53,6 +49,7 @@ if (!isset($_SESSION['rftoken'])){
 } else {
     $token = $_SESSION['rftoken']['token'];
 }
+
 if ($expire_time){
     $token = rfExchange::authenticate();
     $expire = strtotime("+10 min");
@@ -68,11 +65,9 @@ if ($expire_time){
     $params['sort']             title	Sort results by the specified field.
     $params['direction']
 */
-$params['start']=1;
-$tabledata = rfExchange::moodMaplistTracks($x,$y, $params);
-var_dump($tabledata);
-exit;
-$body4 = rfUtils::trackList($tabledata);
 
-echo $body4;
+$params['start']=1;
+$tabledata = rfExchange::occasionlist($playlistID, $params);
+$body2 = rfUtils::playLists($tabledata);
+echo $body2;
 ?>

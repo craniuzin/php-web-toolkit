@@ -24,17 +24,30 @@
  */
 
 
-$x='';
-if (isset($_REQUEST['x'])){
-    $x = $_REQUEST['x'];
+$params = array();
+if (isset($_REQUEST['genre'])){
+    $params['genre'] = $_REQUEST['genre'];
 }
-$y='';
-if (isset($_REQUEST['y'])){
-    $y = $_REQUEST['y'];
+if (isset($_REQUEST['duration'])){
+    $params['duration'] = $_REQUEST['duration'];
+}
+if (isset($_REQUEST['bpm'])){
+    $params['bpm'] = $_REQUEST['bpm'];
+}
+if (isset($_REQUEST['explicit'])){
+    $params['explicit'] = $_REQUEST['explicit'];
+}
+if (isset($_REQUEST['licence'])){
+    $params['licence'] = $_REQUEST['licence'];
+}
+if (isset($_REQUEST['provider_id'])){
+    $params['provider_id'] = $_REQUEST['provider_id'];
+}
+if (isset($_REQUEST['q'])){
+    $params['q'] = $_REQUEST['q'];
 }
 
 $workingDir = dirname(__FILE__);
-
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'rfSDK'. DIRECTORY_SEPARATOR .'rfBase.php');
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR. 'rfSDK'. DIRECTORY_SEPARATOR .'rfExchange.php');
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR . 'rfSDK'. DIRECTORY_SEPARATOR .'rfUtils.php');
@@ -53,6 +66,7 @@ if (!isset($_SESSION['rftoken'])){
 } else {
     $token = $_SESSION['rftoken']['token'];
 }
+
 if ($expire_time){
     $token = rfExchange::authenticate();
     $expire = strtotime("+10 min");
@@ -62,17 +76,34 @@ if ($expire_time){
     );
 }
 
-// parameters
-/*
-    $params['start']		The offset to start listing from.
-    $params['sort']             title	Sort results by the specified field.
-    $params['direction']
-*/
-$params['start']=1;
-$tabledata = rfExchange::moodMaplistTracks($x,$y, $params);
-var_dump($tabledata);
-exit;
-$body4 = rfUtils::trackList($tabledata);
 
-echo $body4;
+/*
+ * SEARCH OPTIONS
+ * $params['genre']
+ * $params['duration']
+ * $params['bpm']
+ * $params['explicit']
+ * $params['licence']
+ * $params['provider_id']
+ * $params['q'] -  This is the search term
+ * $params['start'] -  This is the search term
+ */
+
+
+$params['start']=3;
+
+// Playlist Search
+// $playlists = rfExchange::searchPlaylists($params);
+// All songs Search
+$songs = rfExchange::searchSongs($params);
+// SFX Search
+// $songs = rfExchange::searchSongs($params, true);
+
+//List plaists
+//$result = rfUtils::playLists($playlists);
+
+//List tracks for SONGS search
+$result = rfUtils::trackList($songs);
+
+echo $result;
 ?>

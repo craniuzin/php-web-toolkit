@@ -23,14 +23,9 @@
  this file requires a written agreement with Rumblefish, Inc.
  */
 
-
-$x='';
-if (isset($_REQUEST['x'])){
-    $x = $_REQUEST['x'];
-}
-$y='';
-if (isset($_REQUEST['y'])){
-    $y = $_REQUEST['y'];
+$trackID='';
+if (isset($_REQUEST['trackID'])){
+    $trackID = $_REQUEST['trackID'];
 }
 
 $workingDir = dirname(__FILE__);
@@ -39,8 +34,8 @@ require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'rfSDK'. D
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR. 'rfSDK'. DIRECTORY_SEPARATOR .'rfExchange.php');
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR . 'rfSDK'. DIRECTORY_SEPARATOR .'rfUtils.php');
 
-rfExchange::setUp("sandbox", "sandbox");
 
+rfExchange::setUp("sandbox", "sandbox");
 $expire_time = true;
 
 if (!isset($_SESSION['rftoken'])){
@@ -53,6 +48,7 @@ if (!isset($_SESSION['rftoken'])){
 } else {
     $token = $_SESSION['rftoken']['token'];
 }
+
 if ($expire_time){
     $token = rfExchange::authenticate();
     $expire = strtotime("+10 min");
@@ -61,18 +57,11 @@ if ($expire_time){
         'token' => $token
     );
 }
-
-// parameters
 /*
-    $params['start']		The offset to start listing from.
-    $params['sort']             title	Sort results by the specified field.
-    $params['direction']
-*/
-$params['start']=1;
-$tabledata = rfExchange::moodMaplistTracks($x,$y, $params);
-var_dump($tabledata);
-exit;
-$body4 = rfUtils::trackList($tabledata);
+ * Song info
+ */
+$data = rfExchange::songInfo($trackID);
+$result = rfUtils::songInfo($data);
 
-echo $body4;
+echo $result;
 ?>

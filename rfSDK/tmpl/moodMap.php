@@ -35,6 +35,32 @@
     #mappicker svg {
         overflow:visible !important;
     }
+    ul.faketable li.thead{
+        float: none;
+    }
+    ul.faketable li.tr:nth-child(even){
+        float: none;
+    }
+
+    #coordinates {
+        background: #CCC;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0;
+        padding: 10px;
+        width: 200px;
+    }
+    #matched-terms {
+        padding: 20px;
+        font-size: 14px;
+        background: #99C;
+        color: #000;
+        width: 300px;
+    }
+    #matched-terms li {
+        margin: 10px 0;
+    }
 </style>
 
 <div class="row">
@@ -61,6 +87,7 @@
         </div>
     </div>
 </div>
+<div id="coordinates"></div>
 <div id="playlistid"><img src="img/loader.gif" /></div>
 
 <script>

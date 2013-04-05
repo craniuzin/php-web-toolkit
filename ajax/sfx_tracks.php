@@ -1,7 +1,7 @@
 <?php
 /*
  Rumblefish Web Toolkit (PHP)
- 
+
  Copyright 2012 Rumblefish, Inc.
  
  Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -24,13 +24,9 @@
  */
 
 
-$x='';
-if (isset($_REQUEST['x'])){
-    $x = $_REQUEST['x'];
-}
-$y='';
-if (isset($_REQUEST['y'])){
-    $y = $_REQUEST['y'];
+$sfxID='';
+if (isset($_REQUEST['sfxID'])){
+    $sfxID = $_REQUEST['sfxID'];
 }
 
 $workingDir = dirname(__FILE__);
@@ -39,10 +35,10 @@ require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'rfSDK'. D
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR. 'rfSDK'. DIRECTORY_SEPARATOR .'rfExchange.php');
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR . 'rfSDK'. DIRECTORY_SEPARATOR .'rfUtils.php');
 
+
 rfExchange::setUp("sandbox", "sandbox");
 
 $expire_time = true;
-
 if (!isset($_SESSION['rftoken'])){
     $time = time();
     if (isset($_SESSION['rftoken']['expire'])){
@@ -68,11 +64,10 @@ if ($expire_time){
     $params['sort']             title	Sort results by the specified field.
     $params['direction']
 */
-$params['start']=1;
-$tabledata = rfExchange::moodMaplistTracks($x,$y, $params);
-var_dump($tabledata);
-exit;
-$body4 = rfUtils::trackList($tabledata);
 
-echo $body4;
+$params['start']=1;
+
+$tabledata = rfExchange::sfxTracks($sfxID, $params);
+$result = rfUtils::trackList($tabledata);
+echo $result;
 ?>

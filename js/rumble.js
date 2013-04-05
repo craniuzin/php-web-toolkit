@@ -901,12 +901,14 @@ function mappicker_ondrop(x,y,item) {
         mmtblXHR.abort();
     }
 
+    // Will make the X and Y to be 0,0 when at center
+    x = Math.round(x) - 111;
+    y = (Math.round(y) - 111) * -1;
 
-    alert('Value X: '+ Math.round(x));
-    alert('Value Y: '+ Math.round(y));
+    $("#coordinates").html("X: " + Math.round(x) + " / Y: " + Math.round(y));
 
     $('#playlistid').html('<div class="rf-main-loader"></div>');
-    $('#playlistid').load('/demo-ajax/moodslist_table.php',{ 'x': Math.round(x), 'y':  Math.round(y)});
+    $('#playlistid').load('/ajax/moodslist_table.php',{ 'x': Math.round(x), 'y':  Math.round(y)});
 
     //octblXHR = $('#mygrid').load('occassion/fetch/?id='+gp);
 //    mmtblXHR = $.ajax({

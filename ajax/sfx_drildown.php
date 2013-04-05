@@ -24,13 +24,9 @@
  */
 
 
-$x='';
-if (isset($_REQUEST['x'])){
-    $x = $_REQUEST['x'];
-}
-$y='';
-if (isset($_REQUEST['y'])){
-    $y = $_REQUEST['y'];
+$sfxID='';
+if (isset($_REQUEST['sfxID'])){
+    $sfxID = $_REQUEST['sfxID'];
 }
 
 $workingDir = dirname(__FILE__);
@@ -39,10 +35,10 @@ require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'rfSDK'. D
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR. 'rfSDK'. DIRECTORY_SEPARATOR .'rfExchange.php');
 require_once($workingDir.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR . 'rfSDK'. DIRECTORY_SEPARATOR .'rfUtils.php');
 
+
 rfExchange::setUp("sandbox", "sandbox");
 
 $expire_time = true;
-
 if (!isset($_SESSION['rftoken'])){
     $time = time();
     if (isset($_SESSION['rftoken']['expire'])){
@@ -62,17 +58,12 @@ if ($expire_time){
     );
 }
 
-// parameters
-/*
-    $params['start']		The offset to start listing from.
-    $params['sort']             title	Sort results by the specified field.
-    $params['direction']
-*/
-$params['start']=1;
-$tabledata = rfExchange::moodMaplistTracks($x,$y, $params);
-var_dump($tabledata);
-exit;
-$body4 = rfUtils::trackList($tabledata);
-
-echo $body4;
+$rows = array();
+$tabledata = rfExchange::sfxChild($sfxID);
+if ($tabledata){
+    foreach($tabledata as $x) {
+        $rows[] = '<li rel="' . $x['id'] . '">' . $x['title'] . '</li>';
+    }
+}
+echo implode("\n", $rows);
 ?>
