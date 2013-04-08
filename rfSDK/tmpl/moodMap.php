@@ -54,7 +54,7 @@
     #matched-terms {
         padding: 20px;
         font-size: 14px;
-        background: #99C;
+        background: #9CC;
         color: #000;
         width: 300px;
     }
