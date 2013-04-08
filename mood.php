@@ -54,28 +54,28 @@ $result = rfUtils::moodMap();
 <html>
     <head>
         <title>Rumblefish</title>
-        <link rel="stylesheet" type="text/css" href="/css/rf.stylesheet.css" />
-        <link rel="stylesheet" type="text/css" href="/css/colours.css" />
-        <link rel="stylesheet" type="text/css" href="/css/jplayer.css" />
-        <link rel="stylesheet" type="text/css" href="/css/jnice.css" />
-        <link rel="stylesheet" type="text/css" href="/js/dropkick/dropkick.css" />
-        <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
-        <script type="text/javascript" src="/js/jquery.tools.js"></script>
-        <script type="text/javascript" src="/js/raphael.js"></script>
-        <script type="text/javascript" src="/js/raphael.colorpicker.js"></script>
-        <script type="text/javascript" src="/js/jquery.blockUI.js"></script>
-        <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/rf.stylesheet.css" />
+        <link rel="stylesheet" type="text/css" href="css/colours.css" />
+        <link rel="stylesheet" type="text/css" href="css/jplayer.css" />
+        <link rel="stylesheet" type="text/css" href="css/jnice.css" />
+        <link rel="stylesheet" type="text/css" href="js/dropkick/dropkick.css" />
+        <script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+        <script type="text/javascript" src="js/jquery.tools.js"></script>
+        <script type="text/javascript" src="js/raphael.js"></script>
+        <script type="text/javascript" src="js/raphael.colorpicker.js"></script>
+        <script type="text/javascript" src="js/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.js"></script>
 
-        <script type="text/javascript" src="/js/dropkick/jquery.dropkick-1.0.0.js"></script>
-        <script type="text/javascript" src="/js/jplayer/jquery.jplayer.js"></script>
-        <script type="text/javascript" src="/js/jquery.cookies.js"></script>
-        <script type="text/javascript" src="/js/jquery.jeditable.js"></script>
-        <script type="text/javascript" src="/js/jquery.livequery.js"></script>
-        <script type="text/javascript" src="/js/jquery.qtip.js"></script>
-        <script type="text/javascript" src="/js/zplayer/js/jquery.zplayer.js"></script>
-        <script type="text/javascript" src="/js/zplayer/js/swfobject.js"></script>
-        <script type="text/javascript" src="/js/rumble.js"></script>
-        <script type="text/javascript" src="/js/jquery.checkbox.js"></script>
+        <script type="text/javascript" src="js/dropkick/jquery.dropkick-1.0.0.js"></script>
+        <script type="text/javascript" src="js/jplayer/jquery.jplayer.js"></script>
+        <script type="text/javascript" src="js/jquery.cookies.js"></script>
+        <script type="text/javascript" src="js/jquery.jeditable.js"></script>
+        <script type="text/javascript" src="js/jquery.livequery.js"></script>
+        <script type="text/javascript" src="js/jquery.qtip.js"></script>
+        <script type="text/javascript" src="js/zplayer/js/jquery.zplayer.js"></script>
+        <script type="text/javascript" src="js/zplayer/js/swfobject.js"></script>
+        <script type="text/javascript" src="js/rumble.js"></script>
+        <script type="text/javascript" src="js/jquery.checkbox.js"></script>
         <style>
             .row:after, .clearfix:after {
                 clear: both;
@@ -128,7 +128,7 @@ $result = rfUtils::moodMap();
                 list-style: none;
             }
             #scroll_wrap a.main_prev {
-                background: url(/img/slider-arrow-major.png) no-repeat top left transparent;
+                background: url(img/slider-arrow-major.png) no-repeat top left transparent;
                 position: absolute;
                 left: -18px;
                 width: 37px;
@@ -136,7 +136,7 @@ $result = rfUtils::moodMap();
                 top: 110px;
             }
             #scroll_wrap a.main_next {
-                background: url(/img/slider-arrow-major.png) no-repeat top right transparent;
+                background: url(img/slider-arrow-major.png) no-repeat top right transparent;
                 position: absolute;
                 right: -18px;
                 width: 37px;

@@ -908,7 +908,7 @@ function mappicker_ondrop(x,y,item) {
     $("#coordinates").html("X: " + Math.round(x) + " / Y: " + Math.round(y));
 
     $('#playlistid').html('<div class="rf-main-loader"></div>');
-    $('#playlistid').load('/ajax/moodslist_table.php',{ 'x': Math.round(x), 'y':  Math.round(y)});
+    $('#playlistid').load('../ajax/moodslist_table.php',{ 'x': Math.round(x), 'y':  Math.round(y)});
 
     //octblXHR = $('#mygrid').load('occassion/fetch/?id='+gp);
 //    mmtblXHR = $.ajax({
