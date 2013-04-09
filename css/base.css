@@ -1,0 +1,57 @@
+* {
+    outline: none!important;
+}
+body {
+    font-family: arial, verdana, sans-serif;
+}
+.clear {clear: both};
+
+h1 {
+    margin-bottom: 50px;
+}
+
+
+
+/* MOOD SLIDERS */
+.slider {
+  float: left;
+  clear: left;
+  width: 300px;
+  margin: 5px 15px 15px;
+}
+
+
+#positive-negative .ui-slider-range { background: #96ba09; }
+#positive-negative { background: #a02255; }
+
+#happy-sad .ui-slider-range { background: #d99f00; }
+#happy-sad { background: #3d2ca0;}
+
+#intense-subdued .ui-slider-range { background: #db7107; }
+#intense-subdued { background: #21618d; }
+
+#angry-serene .ui-slider-range { background: #249957; }
+#angry-serene { background: #d92a09; }
+
+.mood {
+    clear: both;
+    margin: 0 0 20px
+}
+.display-bar {
+    float: left;
+    margin: 0 15px;
+    width: 300px;
+}
+.display-bar .left {
+    float: left;
+}
+.display-bar .right {
+    float: right;
+}
+.display-bar em {
+    text-align: center;
+    width: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
