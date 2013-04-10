@@ -19,16 +19,18 @@ h1 {
   width: 300px;
   margin: 5px 15px 15px;
 }
+.slider .ui-slider-handle.ui-state-active {
+   background: #eaeaea; 
+}
 
+#positive-negative { background: #96ba09; }
+#positive-negative .ui-slider-range { background: #a02255; }
 
-#positive-negative .ui-slider-range { background: #96ba09; }
-#positive-negative { background: #a02255; }
+#happy-sad { background: #d99f00; }
+#happy-sad .ui-slider-range { background: #3d2ca0;}
 
-#happy-sad .ui-slider-range { background: #d99f00; }
-#happy-sad { background: #3d2ca0;}
-
-#intense-subdued .ui-slider-range { background: #db7107; }
-#intense-subdued { background: #21618d; }
+#intense-subdued  { background: #db7107; }
+#intense-subdued .ui-slider-range { background: #21618d; }
 
 #angry-serene .ui-slider-range { background: #249957; }
 #angry-serene { background: #d92a09; }

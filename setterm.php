@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]--> 
+        <![endif]-->
 
         <!--[if IE 6]>
             <link href="http://www.jplayer.org/css/ie6.css" rel="stylesheet" type="text/css" />
@@ -34,11 +34,18 @@
 
         <h1>Terms registration:</h1>
 
-        <form>
+        <form name="frm-submit-term" action="save-term.php" method="post">
             <div class="control-group">
                 <label class="control-label" for="genre">Genre:</label>
                 <div class="controls">
                     <input type="text" id="genre" name="genre" placeholder="Blues">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="area">Genre Area:</label>
+                <div class="controls">
+                    <input type="text" id="area" name="area" placeholder="10">
                 </div>
             </div>
 
@@ -54,6 +61,7 @@
                         <em>0</em>
                     </div>
                     <div id="positive-negative" class="slider"></div>
+                    <input type="hidden" name="positive-negative" />
                     <div class="clear"></div>
                 </div>
 
@@ -64,6 +72,7 @@
                         <em>0</em>
                     </div>
                     <div id="happy-sad" class="slider"></div>
+                    <input type="hidden" name="happy-sad" />
                     <div class="clear"></div>
                 </div>
 
@@ -74,6 +83,7 @@
                         <em>0</em>
                     </div>
                     <div id="intense-subdued" class="slider"></div>
+                    <input type="hidden" name="intense-subdued" />
                     <div class="clear"></div>
                 </div>
 
@@ -84,10 +94,13 @@
                         <em>0</em>
                     </div>
                     <div id="angry-serene" class="slider"></div>
+                    <input type="hidden" name="angry-serene" />
                     <div class="clear"></div>
                 </div>
 
             </fieldset>
+
+            <input type="submit" value="Submit" class="btn btn-primary" />
         </form>
     </div>
 
