@@ -1,14 +1,297 @@
 * {
     outline: none!important;
 }
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham_.eot');
+    src: local('☺'), url('/fonts/gotham_.woff') format('woff'), url('/fonts/gotham_.ttf') format('truetype'), url('/fonts/gotham_.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Gotham Medium';
+    src: url('/fonts/gotham_medium.eot');
+    src: local('☺'), url('/fonts/gotham_medium.woff') format('woff'), url('/fonts/gotham_medium.ttf') format('truetype'), url('/fonts/gotham_medium.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     font-family: arial, verdana, sans-serif;
+    background: #fefdf8;
 }
 .clear {clear: both};
 
 h1 {
     margin-bottom: 50px;
 }
+
+/* TOP BAR */
+.top-bar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    padding: 20px 0;
+    z-index: 100;
+    -webkit-box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.1);
+}
+.top-bar .wrap {
+    width: 940px;
+    margin: 0 auto;
+}
+.top-bar nav {
+    float: right;
+}
+.top-bar nav a {
+    float: left;
+    margin: 10px 40px 0 0;
+    font-weight: bold;
+}
+.top-bar nav a.cart {
+    background: #FFF url(../img/cart.jpg) no-repeat 0 4px;
+    padding: 0 0 0 24px;
+}
+.top-bar nav a.cart:hover {
+    background-position: 0 -21px;
+}
+.top-bar nav a.youtube-partner {
+    background: #FFF url(../img/youtube-partner.jpg) no-repeat 0 0;
+    width: 76px;
+    height: 41px;
+    margin-top: -2px;
+}
+
+/* MAIN CONTAINER */
+.container {
+   background: #ebe8e1;
+   margin-top: 80px;
+   padding: 20px 0;
+   font-family: "Gotham";
+}
+.container .already-has {
+    background: #4293e5;
+    color: #FFF;
+    padding: 10px;
+    font-size: 18px;
+    width: 300px;
+    text-align: center;
+    margin: 10px auto;
+    display: block;
+    cursor: pointer;
+}
+.container .already-has:hover {
+    text-decoration: none;
+}
+.container .search {
+    background: #FFF;
+    border-width: 16px 11px;
+    border-color: #3c3c3c;
+    border-style: solid;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+.container .search h1 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+    color: #787677;
+}
+.container .search h1 strong {
+    color: #000;
+    font-weight: normal;
+}
+.container .graphs {
+    margin: 70px 0;
+}
+.container .search .big-box {
+    width: 430px;
+    height: 310px;
+    background: #292929;
+    float: left;
+    margin: 0 0 0 12px;
+    position: relative;
+}
+.container .search .big-box h2 {
+    width: 230px;
+    margin: -40px auto 0;
+    background: transparent url(../img/bg-big-box-title.png) repeat 0 0;
+    text-align: center;
+    font-weight: normal;
+}
+.container .search .big-box h2 strong {
+    color: #FFF;
+}
+.container .search .big-box .help {
+    background: #cecece;
+    color: #000;
+    font-size: 18px;
+    text-align: center;
+    position: absolute;
+    bottom: -27px;
+    width: 100%;
+    padding: 5px 0 2px;
+}
+.container .search .or-div {
+    text-align: center;
+    clear: both;
+    margin: 50px 0 0;
+    font-size: 24px;
+}
+.container .advanced {
+    background: #3c3c3c;
+    padding: 10px;
+    margin: 30px 10px 0;
+}
+.container .advanced input {
+    margin: 0;
+}
+.container .advanced .advanced-field {
+    font-size: 20px;
+    padding: 10px 10px 5px;
+    width: 700px;
+}
+.container .advanced .button.go {
+    background: #3679bf;
+    color: #FFF;
+    border: 0;
+    border-radius: 5px;
+    padding: 9px 8px 8px;
+    font-size: 20px;
+    margin: 0 0 0 -4px;
+}
+.container .advanced a {
+   font-size: 16px;
+   color: #559ae5;
+   border-bottom: 1px solid;
+   cursor: pointer;
+   vertical-align: -1px;
+}
+.container .advanced a:hover {
+    text-decoration: none;
+    border: 0;
+}
+
+.container .tabs {
+    clear: both;
+    margin: 50px 10px 0;
+}
+.container .tabs a {
+    float: left;
+    background: #d5d4d0;
+    width: 150px;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0 20px 0 0;
+    font-size: 18px;
+    cursor: pointer;
+}
+.container .tabs a.active {
+    background: #b8b7b3 url(../img/down-arrow.png) no-repeat center top;
+    color: #000;
+    padding: 13px 0 7px;
+}
+.container .results {
+    background: #f2f1ef;
+    position: relative;
+    margin: 0 10px 0;
+    min-height: 200px;
+    padding: 10px;
+}
+.container .results .filter {
+    clear: both;
+    margin: 20px 0 10px 10px;
+    font-size: 18px;
+}
+.container .results .filter a {
+    background: #a7a7a7;
+    font-size: 14px;
+    padding: 0 5px;
+    border-radius: 3px;
+    color: #FFF;
+    margin: 0 0 0 10px;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+.container .results .filter a:hover {
+    text-decoration: none;
+}
+.container .results .filter a.active {
+    background: #09f;
+    font-weight: bold;
+}
+
+.container .results .list {
+    margin: 0px 0 10px;
+}
+.container .results .list .block {
+    margin-top: 2px;
+}
+.container .results .list .block.active {
+    margin-bottom: 10px;
+}
+.container .results .list .block .name {
+    background: #5d738b none no-repeat 700px center;
+    color: #FFF;
+    text-align: center;
+    font-size: 26px;
+    padding: 20px 0;
+    cursor: pointer;
+}
+.container .results .list .block.active .name {
+    background: #33506e none no-repeat 700px center;
+}
+.container .results .list .block .name:hover {
+    background-image: url(../img/toggle-result-block.png);
+}
+.container .results .list .block ul {
+    list-style: none;
+    margin: 0 30px;
+    display: none;
+}
+.container .results .list .block.active ul {
+    display: block;
+}
+.container .results .list .block ul li {
+    background: #c6c5c3;
+    margin: 4px 0;
+    height: 40px;
+}
+.container .results .list .block ul li span {
+    float: left;
+    font-size: 18px;
+}
+.container .results .list .block ul li .play-button {
+    width: 28px;
+    height: 28px;
+    margin: 6px 0 0 15px;
+    background: transparent url(../img/play-button.png) no-repeat 0 0;
+}
+.container .results .list .block ul li .artist-title {
+    margin: 10px 0 0 20px;
+}
+.container .results .list .block ul li .right {
+    float: right;
+    margin: 6px 40px 0 0;
+}
+.container .results .list .block ul li .right .time {
+    margin-top: 5px;
+}
+.container .results .list .block ul li .right .add {
+    width: 23px;
+    height: 23px;
+    background: transparent url(../img/add-button.png) no-repeat 0 0;
+    margin: 3px 10px 0;
+}
+.container .results .list .block ul li .right .share {
+    width: 28px;
+    height: 28px;
+    background: transparent url(../img/share-button.png) no-repeat 0 0;
+}
+
 
 
 

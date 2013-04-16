@@ -17,6 +17,16 @@ $(document).ready(function(){
     //sliderSettings.min = -70;
     $( "#happy-sad, #angry-serene").slider(sliderSettings);
 
+
+    $('.results .block .name').click(function(){
+        $(this).parent().toggleClass('active',  400);
+    });
+
+    $('.results .filter a').click(function(){
+        $('.results .filter a.active').removeClass('active');
+        $(this).addClass('active');
+    });
+
 });
 
 function setValue(){
