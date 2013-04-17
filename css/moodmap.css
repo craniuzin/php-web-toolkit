@@ -1,0 +1,57 @@
+.rowfix:after, .clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+}
+.rowfix, .clearfix {
+    zoom: 1;
+    display: block;
+}
+
+#moodmapblock {
+    height: 270px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+}
+#mainmapcontainer {
+    background: url(../img/circlefill2.png) no-repeat center 0 transparent;
+    position: relative;
+    height: 270px;
+    width: 310px;
+    margin: 0 auto;
+}
+#mainmapcontainer #svg-container {
+    padding: 12px 0 0 48px;
+    overflow: visible;
+}
+.mmaptooltip {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 5000;
+}
+.mmaptooltip.smile {
+    top: 0;
+    left: 24px;
+}
+.mmaptooltip.smileyellow {
+    right: 16px;
+    top: 3px;
+}
+.mmaptooltip.sad {
+    left: 23px;
+    bottom: 24px;
+}
+.mmaptooltip.angry {
+    right: 17px;
+    bottom: 25px;
+}
+

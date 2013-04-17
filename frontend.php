@@ -13,12 +13,18 @@
 
         <link rel="stylesheet" href="css/eggplant/jquery-ui-1.10.2.custom.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="css/colours.css">
         <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/moodmap.css">
+
 
         <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.2.custom.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/raphael.js"></script>
+        <script type="text/javascript" src="js/raphael.colorpicker.js"></script>
         <script src="js/base.js"></script>
+        <script src="js/moodmap.js"></script>
 
         <!--[if gte IE 9]>
         <style type="text/css">
@@ -55,6 +61,23 @@
                 <div class="graphs">
                     <div class="big-box mood">
                         <h2>Map your <strong>Mood</strong></h2>
+
+                        <div id="moodmapblock" class="gray8bg rowfix">
+                            <div  class="rowfix">
+                                <div class="rowfix" id="mainmapcontainer">
+                                    <a class="mmaptooltip smile" tooltip="Serene"></a>
+                                    <a class="mmaptooltip smileyellow" tooltip="Happy"></a>
+                                    <a class="mmaptooltip sad" tooltip="Sad"></a>
+                                    <a class="mmaptooltip angry" tooltip="Angry"></a>
+                                    <div id="svg-container">
+                                        <div id="mpcontent" style="overflow: visible;">
+                                            <div id="mappicker" style="overflow: visible;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
 
                         <div class="help">Drag slider across the circle</div>
                     </div>
