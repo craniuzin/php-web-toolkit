@@ -3,15 +3,15 @@
 }
 @font-face {
     font-family: 'Gotham';
-    src: url('/fonts/gotham_.eot');
-    src: local('☺'), url('/fonts/gotham_.woff') format('woff'), url('/fonts/gotham_.ttf') format('truetype'), url('/fonts/gotham_.svg') format('svg');
+    src: url('../fonts/gotham_.eot');
+    src: local('☺'), url('../fonts/gotham_.woff') format('woff'), url('../fonts/gotham_.ttf') format('truetype'), url('../fonts/gotham_.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Gotham Medium';
-    src: url('/fonts/gotham_medium.eot');
-    src: local('☺'), url('/fonts/gotham_medium.woff') format('woff'), url('/fonts/gotham_medium.ttf') format('truetype'), url('/fonts/gotham_medium.svg') format('svg');
+    src: url('../fonts/gotham_medium.eot');
+    src: local('☺'), url('../fonts/gotham_medium.woff') format('woff'), url('../fonts/gotham_medium.ttf') format('truetype'), url('../fonts/gotham_medium.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
