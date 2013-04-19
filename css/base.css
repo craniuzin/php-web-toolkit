@@ -24,6 +24,10 @@ body {
 h1 {
     margin-bottom: 50px;
 }
+.loading-list {
+    display: none;
+    margin: 50px auto;
+}
 
 /* TOP BAR */
 .top-bar {
@@ -133,6 +137,33 @@ h1 {
     width: 100%;
     padding: 5px 0 2px;
 }
+.container .search .big-box.tags .cloud-wrapper {
+    overflow: hidden;
+    height: 270px;
+    position: relative;
+    padding: 0 40px;
+}
+.container .search .big-box.tags .cloud-tag {
+    list-style: none;
+    width: 1940px;
+}
+.container .search .big-box.tags .slide-arrow {
+    float: left;
+    width: 40px;
+    height: 310px;
+    margin-top: -40px;
+    position: absolute;
+    top: 0;
+}
+.container .search .big-box.tags .slide-arrow.left {
+    background: #292929 url(../img/slider-left.jpg) no-repeat 0 0;
+    left: 0;
+}
+.container .search .big-box.tags .slide-arrow.right {
+    background: #292929 url(../img/slider-right.jpg) no-repeat 0 0;
+    right: 0;
+}
+
 .container .search .or-div {
     text-align: center;
     clear: both;
@@ -196,7 +227,6 @@ h1 {
     background: #f2f1ef;
     position: relative;
     margin: 0 10px 0;
-    min-height: 200px;
     padding: 10px;
 }
 .container .results .filter {
@@ -246,6 +276,12 @@ h1 {
 }
 .container .results .list .block .name:hover {
     background-image: url(../img/toggle-result-block.png);
+}
+.container .results .list .block.empty {
+    font-size: 20px;
+    text-align: center;
+    margin: 50px auto;
+    font-weight: bold;
 }
 .container .results .list .block ul {
     list-style: none;

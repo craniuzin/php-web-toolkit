@@ -1,3 +1,4 @@
+<?php require_once('controllers/frontend.php'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
@@ -21,10 +22,40 @@
         <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.2.custom.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.tagcloud.min.js"></script>
         <script type="text/javascript" src="js/raphael.js"></script>
         <script type="text/javascript" src="js/raphael.colorpicker.js"></script>
-        <script src="js/base.js"></script>
-        <script src="js/moodmap.js"></script>
+        <script type="text/javascript" src="js/kite.js"></script>
+
+        <script type="text/kite" id="results-tmpl">
+            {{#genres}}
+            <div class="block genre" id="genre-{{slug}}">
+                <div class="name">{{name}}</div>
+                <ul>
+                {{#songs}}
+                    <li>
+                        <span class="play-button"></span>
+                        <span class="artist-title"><strong>{{artist}}</strong> - {{title}}</span>
+                        <div class="right">
+                            <span class="time">{{duration}}</span>
+                            <span class="add"></span>
+                            <span class="share"></span>
+                        </div>
+                    </li>
+                {{/songs}}
+                </ul>
+            </div>
+            {{/genres}}
+        </script>
+
+        <script type="text/kite" id="results-empty">
+            <div class="block genre empty">
+                No songs were found.
+            </div>
+        </script>
+
+        <script type="text/javascript" src="js/base.js"></script>
+        <script type="text/javascript" src="js/moodmap.js"></script>
 
         <!--[if gte IE 9]>
         <style type="text/css">
@@ -40,7 +71,7 @@
 
         <div class="top-bar">
             <div class="wrap">
-                <a href="" class="logo"><img src="img/logo.jpg" /></a> 
+                <a href="" class="logo"><img src="img/logo.jpg" /></a>
 
                 <nav>
                     <a href="#">Sign in</a>
@@ -77,13 +108,23 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
                         <div class="help">Drag slider across the circle</div>
                     </div>
 
                     <div class="big-box tags">
                         <h2>Pick your <strong>Occasion</strong></h2>
+
+                        <div class="cloud-wrapper">
+                            <div class="slide-arrow left" direction="left"></div>
+                            <ul class="cloud-tag">
+                                <?php foreach($aOccasions as $i => $value): ?>
+                                <li value="<?php echo rand(0, 20); ?>" occ-id="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></li>
+                                <?php endforeach; ?>
+                           </ul>
+                           <div class="slide-arrow right" direction="right"></div>
+                        </div>
 
                         <div class="help">Music for certain categories</div>
                     </div>
@@ -109,146 +150,13 @@
 
                         <div class="filter">
                             <span>Filter:</span>
-                            <a class="active">Instrumental</a>
+                            <a>Instrumental</a>
                             <a>Vocal</a>
-                            <a>Both</a>
+                            <a class="active">Both</a>
                         </div>
 
-                        <div class="list">
-                            <div class="block genre active">
-                                <div class="name">Rock</div>
-                                <ul>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="block genre active">
-                                <div class="name">Blues</div>
-                                <ul>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="block genre">
-                                <div class="name">Urban</div>
-                                <ul>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="block genre">
-                                <div class="name">Country</div>
-                                <ul>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="play-button"></span>
-                                        <span class="artist-title"><strong>Justin Earl</strong> - Love in lust</span>
-                                        <div class="right">
-                                            <span class="time">4:00</span>
-                                            <span class="add"></span>
-                                            <span class="share"></span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                        </div>
+                        <img class="loading-list" src="img/042.gif" />
+                        <div class="list"></div>
                     </div>
 
                     <div class="clear"></div>

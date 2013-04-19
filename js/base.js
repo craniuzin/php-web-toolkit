@@ -1,3 +1,6 @@
+var slideSpeed = 0;
+var over = false;
+var offsetX = false;
 $(document).ready(function(){
 
     var sliderSettings = {
@@ -18,7 +21,10 @@ $(document).ready(function(){
     $( "#happy-sad, #angry-serene").slider(sliderSettings);
 
 
-    $('.results .block .name').click(function(){
+    /**
+     * Open the list of songs for a Genre when clicked
+     */
+    $('.results').on('click', '.block .name', function(){
         $(this).parent().toggleClass('active',  400);
     });
 
@@ -26,8 +32,62 @@ $(document).ready(function(){
         $('.results .filter a.active').removeClass('active');
         $(this).addClass('active');
     });
-
+    
+    $(".cloud-tag").tagcloud({type:"list", sizemin:12, sizemax: 24, colormin: '666', colormax: '666'});
+    
+    $('.big-box .slide-arrow')
+    .mousemove(function(event){
+        cloudSlide(event.offsetX, $(this).attr('direction'));
+    })
+    .mouseout(function(){
+        $('.cloud-tag').stop(true, false);
+        over = false;
+    })
+    .mouseenter(function(event){
+        cloudSlide(event.offsetX, $(this).attr('direction'));
+    });
 });
+
+function cloudSlide(x, dir){
+    offsetX = x;
+    over = dir;
+
+    var $cloud = $('.cloud-tag');
+    var width = $cloud.width();
+    
+    var toRight = 430 - width - 80;
+    var toLeft = 0;
+
+    var margin = $cloud.css('margin-left').replace('px', '') * 1;
+    console.log(margin, toRight);
+
+    if(dir == 'left'){
+        if(margin <= toRight + 110){
+            $cloud.stop(true, true).animate({'marginLeft': toRight}, 100, 'linear');
+            return false;
+        }
+
+        $cloud.animate({'marginLeft':'-=100px'}, 200, 'linear', function(){
+            checkSliding();
+        });
+    }
+    else if('right'){
+        if(margin >= -110){
+            $cloud.stop(true, true).animate({'marginLeft': 0}, 100, 'linear');
+            return false;
+        }
+
+        $cloud.animate({'marginLeft':'+=100px'}, 200, 'linear', function(){
+            checkSliding();
+        });
+    }
+}
+
+function checkSliding(){
+    if(over !== false){
+        cloudSlide(offsetX, over);
+    }
+}
 
 function setValue(){
     var value = parseInt($(this).slider('value'));
