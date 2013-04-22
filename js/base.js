@@ -1,4 +1,4 @@
-var slideSpeed = 0;
+var slideSpeed = 200;
 var over = false;
 var offsetX = false;
 $(document).ready(function(){
@@ -32,9 +32,9 @@ $(document).ready(function(){
         $('.results .filter a.active').removeClass('active');
         $(this).addClass('active');
     });
-    
+
     $(".cloud-tag").tagcloud({type:"list", sizemin:12, sizemax: 24, colormin: '666', colormax: '666'});
-    
+
     $('.big-box .slide-arrow')
     .mousemove(function(event){
         cloudSlide(event.offsetX, $(this).attr('direction'));
@@ -49,38 +49,53 @@ $(document).ready(function(){
 });
 
 function cloudSlide(x, dir){
+    // Prevent X to be equals to 0 or 40
+    x = (x == 0) ? 1 : x;
+    x = (x == 40) ? 39 : x;
+
     offsetX = x;
     over = dir;
 
     var $cloud = $('.cloud-tag');
     var width = $cloud.width();
-    
+
     var toRight = 430 - width - 80;
     var toLeft = 0;
 
     var margin = $cloud.css('margin-left').replace('px', '') * 1;
-    console.log(margin, toRight);
 
+    var base = 250;
     if(dir == 'left'){
+        // Changes SlideSpeed
+       var speed = calcSpeed(x, base);
+
         if(margin <= toRight + 110){
             $cloud.stop(true, true).animate({'marginLeft': toRight}, 100, 'linear');
             return false;
         }
 
-        $cloud.animate({'marginLeft':'-=100px'}, 200, 'linear', function(){
+        $cloud.stop(true, false).animate({'marginLeft':'-=100px'}, speed, 'linear', function(){
             checkSliding();
         });
     }
     else if('right'){
+        // Changes SlideSpeed
+        var speed = calcSpeed((40 - x), base);
+
+        console.log(x, speed, 'right');
         if(margin >= -110){
             $cloud.stop(true, true).animate({'marginLeft': 0}, 100, 'linear');
             return false;
         }
 
-        $cloud.animate({'marginLeft':'+=100px'}, 200, 'linear', function(){
+        $cloud.stop(true, false).animate({'marginLeft':'+=100px'}, speed, 'linear', function(){
             checkSliding();
         });
     }
+}
+
+function calcSpeed(x, base){
+    return (x * base) - (x * (base/=1.5)) ;
 }
 
 function checkSliding(){
